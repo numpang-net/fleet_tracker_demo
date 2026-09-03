@@ -1,6 +1,36 @@
 # i18n/zh.yaml
 metadata_title:
   other: "车队管理系统演示"
+fleet_overview:
+  other: "车队概览"
+vehicles:
+  other: "车辆"
+vehicle_positions_waiting:
+  other: "正在等待车辆位置..."
+collapse_vehicle_sidebar:
+  other: "收起车辆侧栏"
+expand_vehicle_sidebar:
+  other: "展开车辆侧栏"
+show_vehicle_on_map:
+  other: "在地图上显示车辆 %ID%"
+service_status:
+  other: "保养状态"
+last_service_date:
+  other: "上次保养日期"
+passenger_count:
+  other: "当前乘客人数"
+route_status:
+  other: "路线状态"
+fuel_status:
+  other: "燃油状态"
+status_due:
+  other: "需保养"
+status_ok:
+  other: "正常"
+status_on_time:
+  other: "准时"
+status_late:
+  other: "延误"
 label_route:
   other: "巴士路线："
 option_all:

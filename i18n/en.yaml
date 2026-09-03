@@ -1,6 +1,36 @@
 # i18n/en.yaml
 metadata_title:
   other: "Fleet Management System Demo"
+fleet_overview:
+  other: "Fleet overview"
+vehicles:
+  other: "Vehicles"
+vehicle_positions_waiting:
+  other: "Waiting for vehicle positions..."
+collapse_vehicle_sidebar:
+  other: "Collapse vehicle sidebar"
+expand_vehicle_sidebar:
+  other: "Expand vehicle sidebar"
+show_vehicle_on_map:
+  other: "Show vehicle %ID% on map"
+service_status:
+  other: "Service status"
+last_service_date:
+  other: "Last service date"
+passenger_count:
+  other: "Current Passenger Count"
+route_status:
+  other: "Route status"
+fuel_status:
+  other: "Fuel Status"
+status_due:
+  other: "DUE"
+status_ok:
+  other: "OK"
+status_on_time:
+  other: "On-Time"
+status_late:
+  other: "Late"
 label_route:
   other: "Bus Route:"
 option_all:

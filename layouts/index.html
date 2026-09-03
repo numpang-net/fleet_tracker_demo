@@ -71,6 +71,21 @@
         data-txt-fullscreen="{{ i18n "control_fullscreen" }}"
         data-txt-fullscreen-exit="{{ i18n "control_fullscreen_exit" }}"
         data-txt-geolocate="{{ i18n "control_geolocate" }}"
+        data-txt-fleet-overview="{{ i18n "fleet_overview" }}"
+        data-txt-vehicles="{{ i18n "vehicles" }}"
+        data-txt-vehicle-positions-waiting="{{ i18n "vehicle_positions_waiting" }}"
+        data-txt-collapse-vehicle-sidebar="{{ i18n "collapse_vehicle_sidebar" }}"
+        data-txt-expand-vehicle-sidebar="{{ i18n "expand_vehicle_sidebar" }}"
+        data-txt-show-vehicle-on-map="{{ i18n "show_vehicle_on_map" }}"
+        data-txt-service-status="{{ i18n "service_status" }}"
+        data-txt-last-service-date="{{ i18n "last_service_date" }}"
+        data-txt-passenger-count="{{ i18n "passenger_count" }}"
+        data-txt-route-status="{{ i18n "route_status" }}"
+        data-txt-fuel-status="{{ i18n "fuel_status" }}"
+        data-txt-status-due="{{ i18n "status_due" }}"
+        data-txt-status-ok="{{ i18n "status_ok" }}"
+        data-txt-status-on-time="{{ i18n "status_on_time" }}"
+        data-txt-status-late="{{ i18n "status_late" }}"
     >
 
         <nav class="top-navbar" aria-label="Primary navigation">
@@ -157,15 +172,15 @@
         <aside id="vehicle-sidebar" class="vehicle-sidebar" aria-labelledby="vehicle-sidebar-title">
             <div class="vehicle-sidebar-header">
                 <div>
-                    <span class="vehicle-sidebar-kicker">Fleet overview</span>
-                    <h2 id="vehicle-sidebar-title">Vehicles</h2>
+                    <span class="vehicle-sidebar-kicker">{{ i18n "fleet_overview" }}</span>
+                    <h2 id="vehicle-sidebar-title">{{ i18n "vehicles" }}</h2>
                 </div>
-                <button id="vehicle-sidebar-toggle" class="vehicle-sidebar-toggle" type="button" aria-expanded="true" aria-controls="vehicle-sidebar-content" aria-label="Collapse vehicle sidebar">
+                <button id="vehicle-sidebar-toggle" class="vehicle-sidebar-toggle" type="button" aria-expanded="true" aria-controls="vehicle-sidebar-content" aria-label="{{ i18n "collapse_vehicle_sidebar" }}">
                     <span aria-hidden="true">−</span>
                 </button>
             </div>
             <div id="vehicle-sidebar-content" class="vehicle-sidebar-content">
-                <p id="vehicle-sidebar-empty" class="vehicle-sidebar-empty">Waiting for vehicle positions...</p>
+                <p id="vehicle-sidebar-empty" class="vehicle-sidebar-empty">{{ i18n "vehicle_positions_waiting" }}</p>
                 <div id="vehicle-list" class="vehicle-list"></div>
             </div>
         </aside>

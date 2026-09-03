@@ -99,7 +99,7 @@ window.renderVehicleSidebar = function(buses) {
         link.className = 'vehicle-id-link';
         link.type = 'button';
         link.textContent = vehicleId;
-        link.setAttribute('aria-label', `Show vehicle ${vehicleId} on map`);
+        link.setAttribute('aria-label', window.txtShowVehicleOnMap.replace('%ID%', vehicleId));
         link.addEventListener('click', () => {
             const marker = window.vehicleMarkers?.[vehicleId];
             if (marker) {
@@ -113,12 +113,14 @@ window.renderVehicleSidebar = function(buses) {
         route.textContent = getDisplayRouteCode(bus.routeCode || 'bus');
 
         const details = document.createElement('dl');
+        const serviceStatus = index % 3 === 0 ? window.txtStatusDue : window.txtStatusOk;
+        const routeStatus = index % 4 === 0 ? window.txtStatusLate : window.txtStatusOnTime;
         const values = [
-            ['Service status', index % 3 === 0 ? 'DUE' : 'OK'],
-            ['Last service date', `2026-${String((index % 8) + 1).padStart(2, '0')}-${String((index % 24) + 1).padStart(2, '0')}`],
-            ['Current Passenger Count', `${(index + 1) * 7}/50`],
-            ['Route status', index % 4 === 0 ? 'Late' : 'On-Time'],
-            ['Fuel Status', `${82 - (index * 9 % 34)}%`]
+            [window.txtServiceStatus, serviceStatus],
+            [window.txtLastServiceDate, `2026-${String((index % 8) + 1).padStart(2, '0')}-${String((index % 24) + 1).padStart(2, '0')}`],
+            [window.txtPassengerCount, `${(index + 1) * 7}/50`],
+            [window.txtRouteStatus, routeStatus],
+            [window.txtFuelStatus, `${82 - (index * 9 % 34)}%`]
         ];
 
         values.forEach(([label, value]) => {
@@ -126,7 +128,7 @@ window.renderVehicleSidebar = function(buses) {
             term.textContent = label;
             const description = document.createElement('dd');
             description.textContent = value;
-            if ((label === 'Service status' && value === 'DUE') || (label === 'Route status' && value === 'Late')) {
+            if ((label === window.txtServiceStatus && value === window.txtStatusDue) || (label === window.txtRouteStatus && value === window.txtStatusLate)) {
                 description.className = 'vehicle-status-warning';
             }
             details.append(term, description);
@@ -163,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebarToggle?.addEventListener('click', () => {
         const isCollapsed = sidebar.classList.toggle('is-collapsed');
         sidebarToggle.setAttribute('aria-expanded', String(!isCollapsed));
-        sidebarToggle.setAttribute('aria-label', isCollapsed ? 'Expand vehicle sidebar' : 'Collapse vehicle sidebar');
+        sidebarToggle.setAttribute('aria-label', isCollapsed ? window.txtExpandVehicleSidebar : window.txtCollapseVehicleSidebar);
         sidebarToggle.querySelector('span').textContent = isCollapsed ? '+' : '−';
     });
 

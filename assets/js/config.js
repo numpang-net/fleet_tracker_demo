@@ -29,6 +29,21 @@ window.txtZoomOut        = window.appShell?.dataset.txtZoomOut        || 'Zoom o
 window.txtFullscreen     = window.appShell?.dataset.txtFullscreen     || 'View Fullscreen';
 window.txtFullscreenExit = window.appShell?.dataset.txtFullscreenExit || 'Exit Fullscreen';
 window.txtGeolocate     = window.appShell?.dataset.txtGeolocate     || 'Track My Location';
+window.txtFleetOverview = window.appShell?.dataset.txtFleetOverview || 'Fleet overview';
+window.txtVehicles      = window.appShell?.dataset.txtVehicles      || 'Vehicles';
+window.txtVehicleWaiting = window.appShell?.dataset.txtVehiclePositionsWaiting || 'Waiting for vehicle positions...';
+window.txtCollapseVehicleSidebar = window.appShell?.dataset.txtCollapseVehicleSidebar || 'Collapse vehicle sidebar';
+window.txtExpandVehicleSidebar = window.appShell?.dataset.txtExpandVehicleSidebar || 'Expand vehicle sidebar';
+window.txtShowVehicleOnMap = window.appShell?.dataset.txtShowVehicleOnMap || 'Show vehicle %ID% on map';
+window.txtServiceStatus = window.appShell?.dataset.txtServiceStatus || 'Service status';
+window.txtLastServiceDate = window.appShell?.dataset.txtLastServiceDate || 'Last service date';
+window.txtPassengerCount = window.appShell?.dataset.txtPassengerCount || 'Current Passenger Count';
+window.txtRouteStatus = window.appShell?.dataset.txtRouteStatus || 'Route status';
+window.txtFuelStatus = window.appShell?.dataset.txtFuelStatus || 'Fuel Status';
+window.txtStatusDue = window.appShell?.dataset.txtStatusDue || 'DUE';
+window.txtStatusOk = window.appShell?.dataset.txtStatusOk || 'OK';
+window.txtStatusOnTime = window.appShell?.dataset.txtStatusOnTime || 'On-Time';
+window.txtStatusLate = window.appShell?.dataset.txtStatusLate || 'Late';
 
 // Branch Muting Verification States
 if (window.branchName === 'main') {

@@ -1,6 +1,36 @@
 # i18n/ms.yaml
 metadata_title:
   other: "Demo Sistem Pengurusan Armada"
+fleet_overview:
+  other: "Ringkasan armada"
+vehicles:
+  other: "Kenderaan"
+vehicle_positions_waiting:
+  other: "Menunggu kedudukan kenderaan..."
+collapse_vehicle_sidebar:
+  other: "Ciutkan bar sisi kenderaan"
+expand_vehicle_sidebar:
+  other: "Kembangkan bar sisi kenderaan"
+show_vehicle_on_map:
+  other: "Tunjukkan kenderaan %ID% pada peta"
+service_status:
+  other: "Status servis"
+last_service_date:
+  other: "Tarikh servis terakhir"
+passenger_count:
+  other: "Bilangan Penumpang Semasa"
+route_status:
+  other: "Status laluan"
+fuel_status:
+  other: "Status Bahan Api"
+status_due:
+  other: "PERLU SERVIS"
+status_ok:
+  other: "OK"
+status_on_time:
+  other: "Menepati Masa"
+status_late:
+  other: "Lewat"
 label_route:
   other: "Laluan Bas:"
 option_all:
