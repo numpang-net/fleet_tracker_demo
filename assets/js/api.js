@@ -33,6 +33,8 @@ window.syncLiveBusTracker = function() {
                 ? targetBuses 
                 : targetBuses.filter(b => b.routeCode && b.routeCode.toLowerCase() === routeSelection.toLowerCase());
 
+            const vehicleMarkers = {};
+
             filtered.forEach(bus => {
                 const dirId = bus.directionId !== undefined ? String(bus.directionId) : (bus.tripId ? bus.tripId.split('_')[1] : '0');
                 const routeKey = bus.routeCode ? bus.routeCode.toLowerCase() : '';
@@ -42,7 +44,10 @@ window.syncLiveBusTracker = function() {
                     finalDestination = window.destinationLookup[routeKey][dirId];
                 }
 
-                L.marker([bus.latitude, bus.longitude], { icon: busIcon })
+                const marker = L.marker([bus.latitude, bus.longitude], { icon: busIcon });
+                vehicleMarkers[String(bus.vehicleNumber)] = marker;
+
+                marker
                  .bindPopup(`
                     <div style="font-family: system-ui, sans-serif; font-size: 12px; min-width: 180px; color: #111;">
                         <span style="color: #2563eb; font-size: 10px; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 2px;">${window.txtPopStream}</span>
@@ -54,6 +59,9 @@ window.syncLiveBusTracker = function() {
                  `, { maxWidth: 250 })
                  .addTo(window.busLayer);
             });
+
+              window.vehicleMarkers = vehicleMarkers;
+            if (typeof window.renderVehicleSidebar === 'function') window.renderVehicleSidebar(filtered);
 
             renderFilteredBusStops(routeSelection);
             if (refreshInd) refreshInd.textContent = window.txtLatest + ` (${selectedSource}): ${new Date().toLocaleTimeString()}`;

@@ -82,6 +82,64 @@ function updateTimetableLink(selectedRoute) {
     }
 }
 
+window.renderVehicleSidebar = function(buses) {
+    const list = document.getElementById('vehicle-list');
+    const empty = document.getElementById('vehicle-sidebar-empty');
+    if (!list || !empty) return;
+
+    list.replaceChildren();
+    empty.style.display = buses.length ? 'none' : 'block';
+
+    buses.forEach((bus, index) => {
+        const vehicleId = String(bus.vehicleNumber || bus.id || 'Unknown');
+        const card = document.createElement('article');
+        card.className = 'vehicle-card';
+
+        const link = document.createElement('button');
+        link.className = 'vehicle-id-link';
+        link.type = 'button';
+        link.textContent = vehicleId;
+        link.setAttribute('aria-label', `Show vehicle ${vehicleId} on map`);
+        link.addEventListener('click', () => {
+            const marker = window.vehicleMarkers?.[vehicleId];
+            if (marker) {
+                window.map.setView(marker.getLatLng(), Math.max(window.map.getZoom(), 14));
+                marker.openPopup();
+            }
+        });
+
+        const route = document.createElement('span');
+        route.className = 'vehicle-route-label';
+        route.textContent = getDisplayRouteCode(bus.routeCode || 'bus');
+
+        const details = document.createElement('dl');
+        const values = [
+            ['Service status', index % 3 === 0 ? 'DUE' : 'OK'],
+            ['Last service date', `2026-${String((index % 8) + 1).padStart(2, '0')}-${String((index % 24) + 1).padStart(2, '0')}`],
+            ['Current Passenger Count', `${(index + 1) * 7}/50`],
+            ['Route status', index % 4 === 0 ? 'Late' : 'On-Time'],
+            ['Fuel Status', `${82 - (index * 9 % 34)}%`]
+        ];
+
+        values.forEach(([label, value]) => {
+            const term = document.createElement('dt');
+            term.textContent = label;
+            const description = document.createElement('dd');
+            description.textContent = value;
+            if ((label === 'Service status' && value === 'DUE') || (label === 'Route status' && value === 'Late')) {
+                description.className = 'vehicle-status-warning';
+            }
+            details.append(term, description);
+        });
+
+        const heading = document.createElement('div');
+        heading.className = 'vehicle-card-heading';
+        heading.append(link, route);
+        card.append(heading, details);
+        list.append(card);
+    });
+};
+
 // --- GLOBAL SYSTEM DELEGATED LISTENERS REGISTRY ---
 document.getElementById('route-selector')?.addEventListener('change', (e) => {
     const code = e.target.value;
@@ -100,6 +158,15 @@ if (infoOverlay) infoOverlay.addEventListener('click', (e) => { if (e.target ===
 
 // --- BOOTSTRAP INITIALIZATION ENGINE ---
 document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('vehicle-sidebar');
+    const sidebarToggle = document.getElementById('vehicle-sidebar-toggle');
+    sidebarToggle?.addEventListener('click', () => {
+        const isCollapsed = sidebar.classList.toggle('is-collapsed');
+        sidebarToggle.setAttribute('aria-expanded', String(!isCollapsed));
+        sidebarToggle.setAttribute('aria-label', isCollapsed ? 'Expand vehicle sidebar' : 'Collapse vehicle sidebar');
+        sidebarToggle.querySelector('span').textContent = isCollapsed ? '+' : '−';
+    });
+
     document.addEventListener('click', (e) => {
         const btn = e.target.closest('#location-toggle-btn');
         if (!btn) return;

@@ -153,6 +153,22 @@
         </div>
 
         <div id="map"></div>
+
+        <aside id="vehicle-sidebar" class="vehicle-sidebar" aria-labelledby="vehicle-sidebar-title">
+            <div class="vehicle-sidebar-header">
+                <div>
+                    <span class="vehicle-sidebar-kicker">Fleet overview</span>
+                    <h2 id="vehicle-sidebar-title">Vehicles</h2>
+                </div>
+                <button id="vehicle-sidebar-toggle" class="vehicle-sidebar-toggle" type="button" aria-expanded="true" aria-controls="vehicle-sidebar-content" aria-label="Collapse vehicle sidebar">
+                    <span aria-hidden="true">−</span>
+                </button>
+            </div>
+            <div id="vehicle-sidebar-content" class="vehicle-sidebar-content">
+                <p id="vehicle-sidebar-empty" class="vehicle-sidebar-empty">Waiting for vehicle positions...</p>
+                <div id="vehicle-list" class="vehicle-list"></div>
+            </div>
+        </aside>
     </div>
 
     <div id="info-modal-overlay">
