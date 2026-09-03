@@ -163,7 +163,7 @@ describe('BAS.MY KCH Tracker: Core Engine Validation', () => {
   it('should manage the responsive info modal lifecycle and assert on automated copyright years', () => {
     cy.get('#info-modal-overlay').should('not.be.visible');
     cy.get('#info-modal-trigger').click();
-    cy.get('#info-modal-card').should('be.visible').and('contain.text', 'About the Tracker');
+    cy.get('#info-modal-card').should('be.visible').and('contain.text', 'About This Demo');
     cy.get('#copyright-year').should('have.text', TARGET_CALENDAR_YEAR);
     cy.get('#info-modal-close').click();
     cy.get('#info-modal-overlay').should('not.be.visible');

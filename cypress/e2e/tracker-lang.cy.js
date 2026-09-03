@@ -13,7 +13,7 @@ describe('BAS.MY KCH Tracker - Native Multilingual E2E Verification', () => {
 
     it('should boot up with default English strings', () => {
       cy.get('html').should('have.attr', 'lang', 'en');
-      cy.title().should('contain', 'BAS.MY KCH Tracker');
+      cy.title().should('contain', 'Fleet Management System Demo');
       cy.get('#app-shell').should('have.attr', 'data-txt-syncing', 'Syncing positions...');
     });
 
