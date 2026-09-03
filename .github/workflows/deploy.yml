@@ -1,9 +1,6 @@
 name: Daily Static GTFS Sync & Deploy
 
 on:
-  schedule:
-    # Runs every day at 19:00 UTC (which corresponds exactly to 03:00 AM GMT+8 Malaysia Time)
-    - cron: '0 19 * * *'
   push:
     branches:
       - main
@@ -76,5 +73,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name="kchbasmy-tracker" --branch="${{ github.ref_name }}"
+          command: pages deploy public --project-name="fleet_tracker_demo" --branch="${{ github.ref_name }}"
           packageManager: npm
