@@ -82,6 +82,15 @@ function updateTimetableLink(selectedRoute) {
     }
 }
 
+window.activeVehicleId = null;
+
+window.clearActiveVehicleCard = function() {
+    document.querySelectorAll('.vehicle-card.is-active').forEach(card => {
+        card.classList.remove('is-active');
+    });
+    window.activeVehicleId = null;
+};
+
 window.renderVehicleSidebar = function(buses) {
     const list = document.getElementById('vehicle-list');
     const empty = document.getElementById('vehicle-sidebar-empty');
@@ -99,12 +108,22 @@ window.renderVehicleSidebar = function(buses) {
         link.className = 'vehicle-id-link';
         link.type = 'button';
         link.textContent = vehicleId;
+        link.setAttribute('aria-pressed', String(window.activeVehicleId === vehicleId));
         link.setAttribute('aria-label', window.txtShowVehicleOnMap.replace('%ID%', vehicleId));
         link.addEventListener('click', () => {
             const marker = window.vehicleMarkers?.[vehicleId];
             if (marker) {
-                window.map.setView(marker.getLatLng(), Math.max(window.map.getZoom(), 14));
-                marker.openPopup();
+                document.querySelectorAll('.vehicle-card.is-active').forEach(activeCard => {
+                    activeCard.classList.remove('is-active');
+                });
+                card.classList.add('is-active');
+                document.querySelectorAll('.vehicle-id-link[aria-pressed="true"]').forEach(activeLink => {
+                    activeLink.setAttribute('aria-pressed', 'false');
+                });
+                link.setAttribute('aria-pressed', 'true');
+                window.activeVehicleId = vehicleId;
+                window.map.once('moveend', () => marker.openPopup());
+                window.map.setView(marker.getLatLng(), Math.max(window.map.getZoom(), 14), { animate: true });
             }
         });
 
@@ -138,6 +157,7 @@ window.renderVehicleSidebar = function(buses) {
         heading.className = 'vehicle-card-heading';
         heading.append(link, route);
         card.append(heading, details);
+        if (window.activeVehicleId === vehicleId) card.classList.add('is-active');
         list.append(card);
     });
 };
@@ -145,6 +165,7 @@ window.renderVehicleSidebar = function(buses) {
 // --- GLOBAL SYSTEM DELEGATED LISTENERS REGISTRY ---
 document.getElementById('route-selector')?.addEventListener('change', (e) => {
     const code = e.target.value;
+    window.clearActiveVehicleCard();
     updateRouteDescriptionLabel(code); updateTimetableLink(code); renderSelectedRouteLine(code); renderFilteredBusStops(code); syncLiveBusTracker();
 });
 

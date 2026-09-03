@@ -46,6 +46,7 @@ window.syncLiveBusTracker = function() {
 
                 const marker = L.marker([bus.latitude, bus.longitude], { icon: busIcon });
                 vehicleMarkers[String(bus.vehicleNumber)] = marker;
+                const vehicleId = String(bus.vehicleNumber);
 
                 marker
                  .bindPopup(`
@@ -58,6 +59,14 @@ window.syncLiveBusTracker = function() {
                     </div>
                  `, { maxWidth: 250 })
                  .addTo(window.busLayer);
+
+                if (typeof marker.on === 'function') {
+                    marker.on('popupclose', () => {
+                        if (window.activeVehicleId === vehicleId && typeof window.clearActiveVehicleCard === 'function') {
+                            window.clearActiveVehicleCard();
+                        }
+                    });
+                }
             });
 
               window.vehicleMarkers = vehicleMarkers;
