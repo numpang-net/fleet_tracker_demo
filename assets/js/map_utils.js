@@ -56,20 +56,33 @@ window.map.addControl(new LocationControl());
 // Interactive Legend Setup Block
 const legend = L.control({ position: 'topright' });
 legend.onAdd = function () {
-    const div = L.DomUtil.create('div', 'map-legend');
+    const div = L.DomUtil.create('div', 'map-legend is-collapsed');
     div.innerHTML = `
-        <div style="font-size: 11px; color: #94a3b8; text-align: center; font-style: italic;">${window.txtLgPrompt}</div>
-        <div class="legend-item"><span class="legend-marker-stop"></span><span>${window.txtLgStop}</span></div>
-        <div class="legend-item"><span class="legend-marker-stop" style="background-color: #f97316 !important;"></span><span>${window.txtLgInterchange}</span></div>
-        <div class="legend-item"><span class="legend-marker-stop" style="background-color: #2563eb !important; width: 14px; height: 14px; margin-left: -2px; margin-right: -2px;"></span><span>${window.txtLgStation}</span></div>
-        <div class="legend-item"><div class="legend-bus-icon-preview"><svg class="legend-svg-use"><use href="#icon-bus"></use></svg></div><span>${window.txtLgBus}</span></div>
-        <div class="legend-item" style="border-top: 1px solid #e2e8f0; margin-top: 6px; padding-top: 6px;">
-            <div style="width: 14px; height: 14px; display: flex; align-items: center; justify-content: center; margin-right: 6px; position: relative; padding-top: 6px;">
-                <div class="legend-geolocation"><svg class="map-svg-use" style="width: 18px; height: 18px;"><use href="#icon-crosshair"></use></svg></div>
+        <div class="legend-header">
+            <span class="legend-header-label">${window.txtLgPrompt}</span>
+            <button class="legend-toggle" type="button" aria-expanded="false" aria-label="Expand map legend" title="Expand map legend">i</button>
+        </div>
+        <div class="legend-content">
+            <div class="legend-item"><span class="legend-marker-stop"></span><span>${window.txtLgStop}</span></div>
+            <div class="legend-item"><span class="legend-marker-stop" style="background-color: #f97316 !important;"></span><span>${window.txtLgInterchange}</span></div>
+            <div class="legend-item"><span class="legend-marker-stop" style="background-color: #2563eb !important; width: 14px; height: 14px; margin-left: -2px; margin-right: -2px;"></span><span>${window.txtLgStation}</span></div>
+            <div class="legend-item"><div class="legend-bus-icon-preview"><svg class="legend-svg-use"><use href="#icon-bus"></use></svg></div><span>${window.txtLgBus}</span></div>
+            <div class="legend-item" style="border-top: 1px solid #e2e8f0; margin-top: 6px; padding-top: 6px;">
+                <div style="width: 14px; height: 14px; display: flex; align-items: center; justify-content: center; margin-right: 6px; position: relative; padding-top: 6px;">
+                    <div class="legend-geolocation"><svg class="map-svg-use" style="width: 18px; height: 18px;"><use href="#icon-crosshair"></use></svg></div>
+                </div>
+                <span style="color: #ffffff; margin-left: -6px; padding-top: 6px;">${window.txtLgGeolocation}</span>
             </div>
-            <span style="color: #ffffff; margin-left: -6px; padding-top: 6px;">${window.txtLgGeolocation}</span>
         </div>
     `;
+    const toggle = div.querySelector('.legend-toggle');
+    toggle.addEventListener('click', () => {
+        const collapsed = div.classList.toggle('is-collapsed');
+        toggle.setAttribute('aria-expanded', String(!collapsed));
+        toggle.setAttribute('aria-label', collapsed ? 'Expand map legend' : 'Collapse map legend');
+        toggle.setAttribute('title', collapsed ? 'Expand map legend' : 'Collapse map legend');
+    });
+    L.DomEvent.disableClickPropagation(div);
     return div;
 };
 legend.addTo(window.map);
