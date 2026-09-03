@@ -980,8 +980,8 @@ h1 {
         bottom: 12px;
         left: 12px;
         width: auto;
-        height: min(70vh, 520px);
-        max-height: min(70vh, 520px);
+        height: min(286px, 70vh);
+        max-height: min(286px, 70vh);
         border-radius: 14px;
     }
 
