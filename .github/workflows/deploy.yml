@@ -73,5 +73,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name="fleet_tracker_demo" --branch="${{ github.ref_name }}"
+          command: pages deploy public --project-name="fleet-tracker-demo" --branch="${{ github.ref_name }}"
           packageManager: npm
