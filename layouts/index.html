@@ -167,23 +167,23 @@
             <span id="refresh-indicator" class="timer">{{ i18n "syncing" | default "Syncing positions..." }}</span>
         </div>
 
-        <div id="map"></div>
-
-        <aside id="vehicle-sidebar" class="vehicle-sidebar" aria-labelledby="vehicle-sidebar-title">
+        <div id="map">
+            <aside id="vehicle-sidebar" class="vehicle-sidebar is-collapsed" aria-labelledby="vehicle-sidebar-title">
             <div class="vehicle-sidebar-header">
                 <div>
                     <span class="vehicle-sidebar-kicker">{{ i18n "fleet_overview" }}</span>
                     <h2 id="vehicle-sidebar-title">{{ i18n "vehicles" }}</h2>
                 </div>
-                <button id="vehicle-sidebar-toggle" class="vehicle-sidebar-toggle" type="button" aria-expanded="true" aria-controls="vehicle-sidebar-content" aria-label="{{ i18n "collapse_vehicle_sidebar" }}">
-                    <span aria-hidden="true">−</span>
+                <button id="vehicle-sidebar-toggle" class="vehicle-sidebar-toggle" type="button" aria-expanded="false" aria-controls="vehicle-sidebar-content" aria-label="{{ i18n "expand_vehicle_sidebar" }}">
+                    <span aria-hidden="true">+</span>
                 </button>
             </div>
             <div id="vehicle-sidebar-content" class="vehicle-sidebar-content">
                 <p id="vehicle-sidebar-empty" class="vehicle-sidebar-empty">{{ i18n "vehicle_positions_waiting" }}</p>
                 <div id="vehicle-list" class="vehicle-list"></div>
-            </div>
-        </aside>
+                </div>
+            </aside>
+        </div>
     </div>
 
     <div id="info-modal-overlay">
