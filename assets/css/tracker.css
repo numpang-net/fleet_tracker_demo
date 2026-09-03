@@ -232,16 +232,19 @@ h1 {
     right: 18px;
     bottom: 18px;
     left: 18px;
-    z-index: 900;
+    z-index: 1100;
     width: auto;
+    height: 236px;
     max-height: 236px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     background: rgba(15, 23, 42, 0.96);
     border: 1px solid rgba(148, 163, 184, 0.24);
     border-radius: 12px;
     box-shadow: 0 12px 28px rgba(2, 6, 23, 0.34);
     backdrop-filter: blur(12px);
-    transition: width 0.2s ease, max-height 0.2s ease;
+    transition: width 0.2s ease, height 0.2s ease;
 }
 
 .vehicle-sidebar-header {
@@ -285,18 +288,34 @@ h1 {
 }
 
 .vehicle-sidebar-content {
-    max-height: 492px;
+    min-height: 0;
+    flex: 1 1 auto;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
     padding: 10px;
 }
 
 .vehicle-sidebar.is-collapsed {
     width: 164px;
+    height: 58px;
+    max-height: 58px;
     right: auto;
 }
 
 .vehicle-sidebar.is-collapsed .vehicle-sidebar-content {
     display: none;
+}
+
+.vehicle-sidebar.is-collapsed .vehicle-sidebar-kicker {
+    display: none;
+}
+
+.vehicle-sidebar.is-collapsed .vehicle-sidebar h2 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .vehicle-sidebar-empty {
@@ -961,17 +980,19 @@ h1 {
         bottom: 12px;
         left: 12px;
         width: auto;
+        height: min(70vh, 520px);
         max-height: min(70vh, 520px);
         border-radius: 14px;
     }
 
     .vehicle-sidebar-content {
-        max-height: calc(min(70vh, 520px) - 66px);
+        max-height: none;
     }
 
     .vehicle-sidebar.is-collapsed {
         width: auto;
         right: 12px;
+        height: 58px;
         max-height: 58px;
     }
 }

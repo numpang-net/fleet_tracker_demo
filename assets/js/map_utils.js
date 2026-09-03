@@ -87,6 +87,16 @@ legend.onAdd = function () {
 };
 legend.addTo(window.map);
 
+const vehicleSidebarContent = document.getElementById('vehicle-sidebar-content');
+if (vehicleSidebarContent) {
+    if (typeof L.DomEvent.disableScrollPropagation === 'function') {
+        L.DomEvent.disableScrollPropagation(vehicleSidebarContent);
+    }
+    if (typeof L.DomEvent.on === 'function' && typeof L.DomEvent.stopPropagation === 'function') {
+        L.DomEvent.on(vehicleSidebarContent, 'touchstart touchmove', L.DomEvent.stopPropagation);
+    }
+}
+
 // --- STATIC TRANSIT MAP PATH & SHAPE LINE DRAW ENGINE ---
 window.renderSelectedRouteLine = function(code) {
     window.pathLayer.clearLayers();
