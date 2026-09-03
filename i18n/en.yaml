@@ -82,17 +82,17 @@ scheduled_times:
 scheduled_failed:
   other: "Failed to load scheduled times"
 about_header:
-  other: "About the Tracker"
+  other: "About This Demo"
 about_tagline:
-  other: "Check location, routes, stops, interchanges, and transit maps for BAS.MY in Kuching, Malaysia!"
+  other: "Fleet Management System Demo based on the Kuching BAS.MY Tracker"
 about_features_title:
   other: "Latest Updates"
 about_features_list_1:
-  other: "18/08/2026: update API endpoint + package version updates"
+  other: "03/09/2026: Add Fleet Management features"
 about_features_list_2:
-  other: "04/07/2026: add zh-MY language support + special thanks section, code refactoring"
+  other: ""
 about_features_list_3:
-  other: "26/06/2026: add language selector + Malay translation + route code suffixes + documentation, fix fallback data"
+  other: ""
 about_contact_title:
   other: "Get in Touch"
 about_btn_github:
@@ -118,4 +118,4 @@ control_geolocate:
 modal_thanks_title:
   other: "Special Thanks"
 modal_thanks_text:
-  other: "Many thanks to Andy T, M. Faiz, and all you amazing people who support this project!"
+  other: "Many thanks to Andy T, M. Faiz, and all you amazing people who support the original project!"

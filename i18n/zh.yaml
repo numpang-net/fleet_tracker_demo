@@ -82,17 +82,17 @@ scheduled_times:
 scheduled_failed:
   other: "无法载入巴士时间表"
 about_header:
-  other: "关于本追踪器"
+  other: "关于本演示"
 about_tagline:
-  other: "查看马来西亚古晋 BAS.MY 巴士的实时位置、路线、巴士站、转运站及路线图！"
+  other: "基于古晋 BAS.MY 追踪器的车队管理系统演示"
 about_features_title:
   other: "最新更新"
 about_features_list_1:
-  other: "18/08/2026：更新 API 端点 + 包版本更新"
+  other: "03/09/2026：新增车队管理功能"
 about_features_list_2:
-  other: "04/07/2026：新增 zh-MY 语言支持 + 特别鸣谢部分，代码重构"
+  other: ""
 about_features_list_3:
-  other: "26/06/2026：新增语言切换、马来文翻译、路线编号后缀及说明文件，并修复备用资料。"
+  other: ""
 about_contact_title:
   other: "联络我们"
 about_btn_github:
@@ -118,4 +118,4 @@ control_geolocate:
 modal_thanks_title:
   other: "特别鸣谢"
 modal_thanks_text:
-  other: "非常感谢 Andy T、M. Faiz 以及所有支持这个项目的了不起的人们！"
+  other: "非常感谢 Andy T、M. Faiz 以及所有支持原始项目的了不起的人们！"
